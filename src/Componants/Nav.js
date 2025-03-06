@@ -6,8 +6,8 @@ function Nav(){
             <Link to="/home" className="h">Home</Link>
             <Link to="/about" className="h">About</Link>
             <Link to="/contact" className="h">Contact</Link>
-            <Link to="signup" className="h">SignUp</Link>
-            {/*<a href="/about" className="h">About</a>*/}
+            <Link to="/signup" className="h">SignUp</Link>
+            <Link to="/updatemovie" className="h">UpdateMovie</Link>
         </div>
     )
 }

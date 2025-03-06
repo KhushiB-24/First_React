@@ -1,25 +1,24 @@
-import { useState } from 'react';
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
 import './Main.css';
-import axios from 'axios';
-function Contact(){
 
+function UpdateMovie({id}){
     const[movie, setMovie] = useState({id:'', title:'', release_date:'', genere:'', director:''});
 
-    let hChange = (e) =>{
+    var hChange = (e) =>{
         var{name, value} = e.target;
         setMovie({...movie, [name]:value});
     }
 
     const[res, setRes] = useState("");
-    let handleSubmit = (e)=>{
+    var handleSubmit = (e)=>{
         e.preventDefault();
-        axios.post("http://localhost:8080/movies", movie).then(()=>{setRes("Added successfully")}).catch(()=>{setRes("Something wents wrong")});
+        axios.put(`http://localhost:8080/movies/${id}`, movie).then((Response)=>{setRes()}).catch(()=>{setRes("Something wents wrong")});
     }
 
-    return( 
-        <div className='contact-page'>
-            <h1>Hello From Contact</h1>
-
+    return (
+        <div className="put-page">
             <form onSubmit={handleSubmit}>
                 <input type='text' name="id" value={movie.id} onChange={hChange} />
                 <input type='text' name="title" value={movie.title} onChange={hChange} />
@@ -31,11 +30,11 @@ function Contact(){
 
                 <h1>{movie.title}</h1>
                 <h1>{movie.release_date}</h1>
-                <h1>{movie.genere}</h1>
+                <h1>{movie.genere}</h1>w
                 <h1>{res}</h1>
             </form>
         </div>
     )
 }
 
-export default Contact;
+export default UpdateMovie;

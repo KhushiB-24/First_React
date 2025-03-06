@@ -1,13 +1,23 @@
 import axios from "axios"
 import { useState } from "react"
+import "./Show.css";
 
 function Show(){
 
     var[products, setProducts] = useState([]);
-    axios.get("https://localhost:8080/movies").then((r)=>{setProducts(r.data)}).catch((er)=>{console.log(er)});
+    axios.get("http://localhost:8080/movies").then((r)=>{setProducts(r.data)}).catch((er)=>{console.log(er)});
     return(
         <div>
-            <div>{products[1] ? <div>{products[1].title}</div> : <h1>Loading....</h1>}</div>
+            <div>{products ? <div>
+                                {products.map((a)=>{return <div className="movies">
+                                                                <img src={a.img_url}></img>
+                                                                <h1>{a.title}</h1>
+                                                                <h1>{a.release_date}</h1>
+                                                                <h1>{a.genere}</h1>
+                                                                <h1>{a.director}</h1>
+                                                            </div>})}                                                                                       
+                             </div> : <h1>Loading....</h1>}
+            </div>
         </div>
     )
 }

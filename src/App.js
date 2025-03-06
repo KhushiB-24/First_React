@@ -11,20 +11,29 @@ import About from './Componants/About';
 import Contact from './Componants/Contact';
 import SignUp from './Componants/SignUp';
 import Show from './Componants/Show';
-import Filter from './Componants/Filter';
+import UpdateMovie from './Componants/Put';
+import MyClass from './Componants/MyClass';
+import Demo from './Componants/Demo';
+import MyComponent from './Componants/Memo';
+import UseRed from './Componants/UseRed';
+import Counter from './Componants/UseRed';
 
 function App(){
   return(
     <div>
       <BrowserRouter>
-        <Contact/>
-
+      <Counter/>
+      <MyComponent value="Sachi"/>
+        <Demo/>
+        <MyClass/>
+        <Show/>
         <Nav/>
         <Routes>
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/signup' element={<SignUp/>}></Route>
+        <Route path='/updatemovie' element={<UpdateMovie id={1}/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
